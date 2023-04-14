@@ -24,4 +24,5 @@
     <string name="clear">C</string>
     <string name="welcome">Welcome to MY Calculator</string>
     <string name="calc">CALC</string>
+    <string name="zero_hint">0.</string>
 </resources>

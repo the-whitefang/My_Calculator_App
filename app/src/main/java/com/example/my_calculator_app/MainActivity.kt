@@ -3,17 +3,20 @@ package com.example.my_calculator_app
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
 import com.example.my_calculator_app.databinding.ActivityMainBinding
 import net.objecthunter.exp4j.ExpressionBuilder
+import java.util.EmptyStackException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private var value: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
+        var expression=""
         with(binding){
             btn0.setOnClickListener {
                 iofield.text = iofield.text.toString()+"0"
@@ -82,16 +85,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             btnEqualTo.setOnClickListener {
-                val expression = iofield.text.toString()
+
+                expression = iofield.text.toString()
                 val result = ExpressionBuilder(expression).build()
                 val eval = result.evaluate()
                 iofield.text = eval.toString()
 
             }
-
-
-
-
         }
 
 
